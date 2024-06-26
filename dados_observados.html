@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="img/favicon.png" type="image/favicon">
+    <!-- Link para ícones do Google Material -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Link para ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Script do menu toggle -->
+    <script src="menu-toogle.js" defer></script>
+    <title>MASTER - Meteorologia Aplicada a Sistemas de Tempo Regionais</title>
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header id="header">
+        <nav id="nav">
+            <!-- Logotipo -->
+            <h2><a href="index.html"><img src="img/logo_master3.png" alt="logo_master"></a></h2>
+            <h4>Dados Observados</h4>
+            <ul>
+                <!-- Alternar idioma para Português -->
+                <li>
+                    <span class="lang-flag" onclick="changeLanguage('pt')">&#127463;&#127479;</span>
+                </li>
+                <!-- Alternar idioma para Inglês -->
+                <li>
+                    <span class="lang-flag" onclick="changeLanguage('en')">&#127482;&#127480;</span>
+                </li>
+                <!-- Alternar idioma para Espanhol -->
+                <li>
+                    <span class="lang-flag" onclick="changeLanguage('es')">&#127466;&#127480;</span>
+                </li>
+                <!-- Menu toggle -->
+                <div onclick="toggleMenu()">
+                    <i class="material-icons open-menu-icon">menu</i>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="map-container">
+        <!-- Mapa embutido do Google Maps -->
+        <iframe id="map-frame"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.1180642692107!2d-48.054000825640195!3d-23.60009836301462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c5cc9cc5b2b48d%3A0x22c89f087b9f542e!2sFatec%20Itapetininga!5e0!3m2!1spt-BR!2sbr!4v1716756926332!5m2!1spt-BR!2sbr"
+            frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0">
+        </iframe>
+        <!-- Menu lateral -->
+        <div class="menu-lateral">
+            <ul>
+                <!-- Link para a página de Imagem de Satélite -->
+                <li>
+                    <a href="dados_observados.html">
+                        <i class="material-icons menu-lateral-icon">satellite_alt</i>
+                        <span class="menu-lateral-iten">Imagem de Satélite</span>
+                    </a>
+                </li>
+                <!-- Link para a página de Radiossondagem -->
+                <li>
+                    <a href="dados_observados.html">
+                        <i class="material-icons menu-lateral-icon">settings_input_antenna</i>
+                        <span class="menu-lateral-iten">Radiossondagem</span>
+                    </a>
+                </li>
+                <!-- Link para a página de Estações Automáticas do INMET -->
+                <li>
+                    <a href="dados_observados.html">
+                        <i class="material-icons menu-lateral-icon">thermostat</i>
+                        <span class="menu-lateral-iten">INMET - Estações Automáticas</span>
+                    </a>
+                </li>
+                <!-- Link para a página de METAR - Aeroportos -->
+                <li>
+                    <a href="dados_observados.html">
+                        <i class="material-icons menu-lateral-icon">flight</i>
+                        <span class="menu-lateral-iten">METAR - Aeroportos</span>
+                    </a>
+                </li>
+                <!-- Link para a página de SYNOP -->
+                <li>
+                    <a href="dados_observados.html">
+                        <i class="material-icons menu-lateral-icon">thermostat</i>
+                        <span class="menu-lateral-iten">SYNOP</span>
+                    </a>
+                </li>
+                <!-- Link para a página de Controles -->
+                <li>
+                    <a href="#" onclick="toggleMenu()">
+                        <i class="material-icons menu-lateral-icon">tune</i>
+                        <span class="menu-lateral-iten">Controles</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Controles laterais -->
+            <div id="div-controls">
+                <!-- Seção de variáveis de superfície -->
+                <div id="divVarSup" class="div-block-control">
+                    <h4>Superfície</h4>
+                    <div id="panel2b" class="panel-content">
+                        <!-- Controle METAR -->
+                        <label id="colorMET" data-tooltip="" title="" class="">
+                            <strong>
+                                METAR - Aeroportos
+                                <span style="color:#000;" id="spColorMet">▬</span>
+                            </strong>
+                        </label>
+                        <select name="cbDataMetar" id="cbDataMetar">
+                            <option value="202405281700" selected="">28-mai-2024 17:00</option>
+                        </select>
+                        <label for="son_met">
+                            <input style="margin-bottom:0" type="checkbox" name="sup" value="METAR" id="son_met"
+                                data-date="#cbDataMetar" data-caption="METAR" data-outro="#son_met2">&nbsp;
+                            Vento, temperatura e ponto de orvalho
+                        </label>
+                        <label for="son_met2">
+                            <input type="checkbox" name="sup" value="METAR2" id="son_met2" data-date="#cbDataMetar"
+                                data-caption="METAR" data-outro="#son_met">&nbsp;Vento, visibilidade e pressão
+                        </label>
+                        <!-- Controle SYNOP -->
+                        <label id="colorSYN" data-tooltip="" title=""><b>
+                                SYNOP
+                                <span style="color:#007f00;" id="spColorSyn">▬</span></b>
+                        </label>
+                        <select name="cbDataSynop" id="cbDataSynop">
+                            <option value="202405281800" selected="">28-mai-2024 18:00</option>
+                        </select>
+                        <label for="son_syn">
+                            <input style="margin-bottom:0" type="checkbox" name="sup" value="SYNOP" id="son_syn"
+                                data-date="#cbDataSynop" data-caption="SYNOP" data-outro="#son_syn2">&nbsp;Vento, p.
+                            orvalho e temp.
+                        </label>
+                        <label for="son_syn2">
+                            <input type="checkbox" name="sup" value="SYNOP2" id="son_syn2" data-date="#cbDataSynop"
+                                data-caption="SYNOP" data-outro="#son_syn">&nbsp;Vento, precipitação e pressão
+                        </label>
+                        <!-- Controle INMET -->
+                        <label id="colorINM" data-tooltip="" title=""><b>
+                                INMET - Est. Automáticas
+                                <span style="color:#ff0000;" id="spColorInm">▬</span></b>
+                        </label>
+                        <select name="cbDataInmet" id="cbDataInmet">
+                            <option value="202405282100" selected="">28-mai-2024 21:00</option>
+                        </select>
+                        <label for="son_inm">
+                            <input style="margin-bottom:0" type="checkbox" name="sup" value="INMET" id="son_inm"
+                                data-date="#cbDataInmet" data-caption="INMET" data-outro="#son_inm2">&nbsp;Vento,
+                            temperatura e ponto de orvalho
+                        </label>
+                        <label for="son_inm2">
+                            <input type="checkbox" name="sup" value="INMET2" id="son_inm2" data-date="#cbDataInmet"
+                                data-caption="INMET" data-outro="#son_inm">&nbsp;Vento, precipitação e radiação
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Seção de variáveis de altitude -->
+                <div id="divVarAlt" class="div-block-control">
+                    <h4>Altitude</h4>
+                    <div id="panel3b" class="panel-content">
+                        <!-- Controle Radiossondagem -->
+                        <label id="colorRAOB" data-tooltip="" title=""><b>
+                                Radiossondagem
+                                <span style="color:#0000ff;" id="spColorRaob">▬</span></b>
+                        </label>
+                        <select name="cbDataRaob" id="cbDataRaob">
+                            <option value="202405281200" selected="">28-mai-2024 12:00</option>
+                        </select>
+                        <label for="son_raob">
+                            <input style="margin-bottom:0" type="checkbox" name="alt" value="RAOB" id="son_raob"
+                                data-date="#cbDataRaob" data-caption="RAOB" data-outro="#son_raob2">&nbsp;Vento e
+                            temperatura
+                        </label>
+                        <label for="son_raob2">
+                            <input type="checkbox" name="alt" value="RAOB2" id="son_raob2" data-date="#cbDataRaob"
+                                data-caption="RAOB" data-outro="#son_raob">&nbsp;Vento, umidade e pressão
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

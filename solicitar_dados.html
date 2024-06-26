@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/favicon.png" type="image/favicon">
+    <title>MASTER - Solicitar Dados</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav id="nav">
+            <h2><a href="index.html"><img src="img/logo_master3.png" alt="logo_master"></a></h2>
+
+            <div class="logo-dropdown">
+                <a href="index.html"><img src="img/favicon.png" alt="logo_master"></a>
+            </div>
+
+            <ul>
+                <li>
+                    <a href="#">Produtos Numéricos</a>
+                    <ul>
+                        <li><a href="modelos_globais.html">Modelos Globais</a></li>
+                        <li><a href="modelos_regionais.html">Modelos Regionais</a></li>
+                        <li><a href="exposicao_sol.html">Exposição ao Sol</a></li>
+                        <li><a href="queimadas.html">Queimadas</a></li>
+                        <li><a href="comparacao_modelos.html">Comparação entre Modelos</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Dados Observados</a>
+                    <ul>
+                        <li><a href="dados_observados.html">Imagens de Satélite</a></li>
+                        <li><a href="dados_observados.html">Radiossondagem</a></li>
+                        <li><a href="dados_observados.html">INMET - Estações Automáticas</a></li>
+                        <li><a href="dados_observados.html">METAR - Aeroportos</a></li>
+                        <li><a href="dados_observados.html">SYNOP</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Laboratório</a>
+                    <ul>
+                        <li><a href="equipe.html">Equipe</a></li>
+                        <li><a href="ensino.html">Ensino</a></li>
+                        <li><a href="projeto_lba.html">Projeto LBA</a></li>
+                        <li><a href="artigos.html">Artigos</a></li>
+                        <li><a href="historico.html">Histórico</a></li>
+                        <li><a href="solicitar_dados.html">Solicitar Dados</a></li>
+                        <li><a href="fale_conosco.html">Fale Conosco</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Idiomas</a>
+                    <ul>
+                        <li><a href="#" onclick="changeLanguage('en')">English</a></li>
+                        <li><a href="#" onclick="changeLanguage('es')">Español</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="solicitar-dados">
+            <div class="banner">
+                <div class="logo_3">
+                    <img src="img/logo_master3.png" alt="Logo Master">
+                </div>
+                <div class="title_3">
+                    <h1>Solicitar Dados</h1>
+                </div>
+            </div>
+
+            <form id="solicitar-dados-form" action="/solicitar_dados" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="finalidade">Finalidade:</label>
+                <input type="text" id="finalidade" name="finalidade" required>
+
+                <label for="detalhes">Detalhes:</label>
+                <textarea id="detalhes" name="detalhes" required></textarea>
+
+                <label for="profissao">Sua profissão ou graduação:</label>
+                <input type="text" id="profissao" name="profissao" required>
+
+                <label for="instituicao">Sua instituição:</label>
+                <input type="text" id="instituicao" name="instituicao" required>
+
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="Acre">Acre</option>
+                    <option value="Alagoas">Alagoas</option>
+                    <option value="Amapá">Amapá</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Bahia">Bahia</option>
+                    <option value="Ceará">Ceará</option>
+                    <option value="Distrito Federal">Distrito Federal</option>
+                    <option value="Espírito Santo">Espírito Santo</option>
+                    <option value="Goiás">Goiás</option>
+                    <option value="Maranhão">Maranhão</option>
+                    <option value="Mato Grosso">Mato Grosso</option>
+                    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                    <option value="Minas Gerais">Minas Gerais</option>
+                    <option value="Pará">Pará</option>
+                    <option value="Paraíba">Paraíba</option>
+                    <option value="Paraná">Paraná</option>
+                    <option value="Pernambuco">Pernambuco</option>
+                    <option value="Piauí">Piauí</option>
+                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                    <option value="Rondônia">Rondônia</option>
+                    <option value="Roraima">Roraima</option>
+                    <option value="Santa Catarina">Santa Catarina</option>
+                    <option value="São Paulo" selected>São Paulo</option>
+                    <option value="Sergipe">Sergipe</option>
+                    <option value="Tocantins">Tocantins</option>
+                </select>
+
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+
+                <label for="orientador">Orientador:</label>
+                <input type="text" id="orientador" name="orientador" required>
+
+                <label for="instituicao_orientador">Instituição do orientador:</label>
+                <input type="text" id="instituicao_orientador" name="instituicao_orientador" required>
+
+                <label for="estado_orientador">Estado do orientador:</label>
+                <select id="estado_orientador" name="estado_orientador" required>
+                    <option value="Acre">Acre</option>
+                    <option value="Alagoas">Alagoas</option>
+                    <option value="Amapá">Amapá</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Bahia">Bahia</option>
+                    <option value="Ceará">Ceará</option>
+                    <option value="Distrito Federal">Distrito Federal</option>
+                    <option value="Espírito Santo">Espírito Santo</option>
+                    <option value="Goiás">Goiás</option>
+                    <option value="Maranhão">Maranhão</option>
+                    <option value="Mato Grosso">Mato Grosso</option>
+                    <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                    <option value="Minas Gerais">Minas Gerais</option>
+                    <option value="Pará">Pará</option>
+                    <option value="Paraíba">Paraíba</option>
+                    <option value="Paraná">Paraná</option>
+                    <option value="Pernambuco">Pernambuco</option>
+                    <option value="Piauí">Piauí</option>
+                    <option value="Rio de Janeiro">Rio de Janeiro</option>
+                    <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                    <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                    <option value="Rondônia">Rondônia</option>
+                    <option value="Roraima">Roraima</option>
+                    <option value="Santa Catarina">Santa Catarina</option>
+                    <option value="São Paulo" selected>São Paulo</option>
+                    <option value="Sergipe">Sergipe</option>
+                    <option value="Tocantins">Tocantins</option>
+                </select>
+
+                <label for="cidade_orientador">Cidade do orientador:</label>
+                <input type="text" id="cidade_orientador" name="cidade_orientador" required>
+
+                <label for="captcha">Digite o texto a seguir:</label>
+                <div id="captcha-container"></div>
+                <input type="text" id="captcha-input" name="captcha" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Gera um CAPTCHA simples com letras e números
+        function generateCaptcha() {
+            const charsArray = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const lengthOtp = 6;
+            let captcha = [];
+            for (let i = 0; i < lengthOtp; i++) {
+                const index = Math.floor(Math.random() * charsArray.length);
+                captcha.push(charsArray[index]);
+            }
+            return captcha.join('');
+        }
+
+        // Renderiza o CAPTCHA como uma imagem no container
+        function renderCaptcha(captcha) {
+            const canvas = document.createElement("canvas");
+            canvas.width = 200;
+            canvas.height = 50;
+            const ctx = canvas.getContext("2d");
+
+            // Adiciona efeito de distorção à imagem
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "#000";
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            ctx.fillText(captcha, canvas.width / 2, canvas.height / 2);
+
+            // Adiciona ruído à imagem
+            for (let i = 0; i < 10; i++) {
+                ctx.fillStyle = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`;
+                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
+            }
+
+            return canvas.toDataURL("image/png");
+        }
+
+        // Inicializa o CAPTCHA no carregamento da página
+        document.addEventListener("DOMContentLoaded", () => {
+            const captchaText = generateCaptcha();
+            const captchaContainer = document.getElementById("captcha-container");
+
+            const captchaImage = new Image();
+            captchaImage.src = renderCaptcha(captchaText);
+            captchaImage.style.filter = "blur(1px)"; // Adiciona efeito de blur à imagem
+            captchaContainer.appendChild(captchaImage);
+
+            // Validação do CAPTCHA no envio do formulário
+            const form = document.getElementById("solicitar-dados-form");
+            form.addEventListener("submit", (e) => {
+                const userInput = document.getElementById("captcha-input").value;
+                if (userInput !== captchaText) {
+                    alert("CAPTCHA incorreto. Tente novamente.");
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer id="footer" class="hide-for-print">
+        <div class="row">
+            <div class="small-12 columns">
+                <h5><b>MASTER</b> | Meteorologia Aplicada a Sistemas de Tempo Regionais<br /><span>Instituto de
+                        Astronomia, Geofísica e Ciências Atmosféricas<br />
+                        Universidade de São Paulo</span></h5>
+                <p class="footLinks">
+                    <a href="/pr/mapa/">Mapa do site</a><span>|</span>
+                    <a href="/pedidos/formulario/">Solicitar dados</a><span>|</span>
+                    <a href="/pr/fale/">Fale conosco</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function changeLanguage(language) {
+            var links = document.querySelectorAll('a[href]');
+            for (var i = 0; i < links.length; i++) {
+                var href = links[i].getAttribute('href');
+                if (href && href.endsWith('.html')) {
+                    var parts = href.split('.');
+                    var newHref = parts[0] + '_' + language + '.' + parts[1];
+                    links[i].setAttribute('href', newHref);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

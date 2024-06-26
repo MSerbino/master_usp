@@ -1,0 +1,530 @@
+/* Geral */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, 'Roboto', Arial, sans-serif;
+}
+
+html{
+    max-width: calc(100vw -10px);
+    scrollbar-width: 10px;
+}
+
+/* Definindo as cores */
+body {
+    background-color: #d0ab7a;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Ajustando o layout */
+#header {
+	background-color: #fff;
+    border-bottom: 1px solid #ddd;    
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+h2, 
+h4,
+h5,  
+#texto-informativo, 
+.footLinks {
+    font-weight: normal;    
+    text-rendering: optimizeLegibility;
+    text-align: center;
+    line-height: 1.5;
+}
+
+#header nav {
+    display: flex;
+    justify-content: space-between; /* titulo de um lado e links do outro */
+    align-items: center;
+    margin: 0px auto;
+    padding: 0px 10px;
+    min-height: 50px;
+    z-index: 1000;
+}
+
+#header nav h4 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo-dropdown {
+    display: flex;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+#header nav ul {
+    display: flex;
+    align-items: center;
+    margin: 0 1px;
+    padding: 0;
+    list-style: none;
+}
+
+#header nav ul li {
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#header nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+}
+
+#header nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;    
+    background-color: #A7884E;
+    z-index: 2000;
+}
+
+#header nav ul ul li {
+    display: block;
+}
+
+#header nav ul li:hover > ul {
+    display: inherit;
+}
+
+/* Ajustando o tamanho do logo */
+#header nav h2 img {
+    height: 30px;   	
+}
+
+/* Estilizando os submenus */
+#nav ul ul {
+    display: none;
+    position: relative;
+    top: 20px;   
+    border-radius: 5px;
+    background-color: #A7884E;
+    border-top: 2px solid #feffd4;
+    z-index: 2000;
+}
+
+#nav ul ul ul {
+    top: 5px;
+    right: 100%;
+}
+
+#nav ul li:hover > ul {
+    display: block;
+}
+
+/* Estilizando os links dos submenus */
+#nav ul ul li {
+    display: block;    
+    width: auto; /* Define a largura desejada para os submenus */
+    border-radius: 5px;
+}
+
+#nav ul ul li a {
+    padding: 10px 15px;   
+    color: #f5d093; /* Cor dos links nos submenus */
+    white-space: nowrap; /* Evita quebrar o texto em múltiplas linhas */
+}
+
+#nav ul ul li a:hover {
+    background-color: #f5d093; /* Mudando a cor de fundo ao passar o mouse */
+    color:black; /* Mudando a cor do texto ao passar o mouse */
+}
+
+.lang-flag{
+    font-size: 1.6rem;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+#banner {
+	padding-top: 10px;    
+    margin: 0 auto;
+    text-align: center;
+}
+
+.map-container{
+    display: flex;
+    justify-content: end;
+    height: calc(100vh - 50px);
+}
+
+.menu-lateral{
+    padding: 10px;
+    width: auto;
+    max-height: calc(100vh - 50px);
+    overflow-y: scroll;
+    transition: transform 1s;
+    scrollbar-width: none; /* Oculta a barra de rolagem */
+}
+
+/* Oculta a barra de rolagem em navegadores baseados em WebKit */
+.menu-lateral::-webkit-scrollbar {
+    display: none;
+}
+
+/* Para Firefox */
+.menu-lateral::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem em navegadores baseados em WebKit */
+}
+
+.menu-lateral a {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 24px;
+    text-decoration: none;   
+}
+
+.menu-lateral a:visited{
+    color: black;
+    text-decoration: none;   
+}
+
+.menu-lateral a:hover{
+    color: red;
+    text-decoration: none;   
+}
+
+.menu-lateral ul li{
+    list-style: none;
+}
+
+.menu-lateral-iten{
+    font-size: 1rem;
+    display: none;
+}
+
+.open-menu-icon {
+    font-size: 32px !important;
+    cursor: pointer;
+    transition: transform 1s;
+    margin-left: 32px;
+}
+
+.menu-lateral-icon{
+    font-size: 40px !important;
+    cursor: pointer;
+}
+
+#div-controls{
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+    padding: 10px 5px;
+}
+
+.div-block-control h4{
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.text-center {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.legenda {
+    font-size: 15px;
+    line-height: 1.5em;
+    margin-top: 10px;
+}
+
+.columns {    
+    line-height: 1.5em;    
+}
+
+.panel-content{
+    display: block;
+}
+
+.panel-content strong{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.panel-content select{
+    width: 100%;
+    height: 2.4rem;
+    padding: 8px;
+    margin-bottom: 16px;
+    color: #000;
+    background-color: #fafafa;
+    border-style: solid;
+    border-width: 1px;
+    border-top: #ccc;
+}
+
+.panel-content input[type="checkbox"]{
+    border-width: 2px;
+
+}
+
+.panel-content label{
+    display: block;
+    font-size: 1.2rem;
+    color: #4d4d4d;
+    cursor: pointer;
+    display: block;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.panel-content-divisor{
+    margin: 8px 0px;
+    border-style: solid;
+    border-color: #ddd;
+    border-width: 1px 0 0;
+    clear: both;
+    height: 0;
+}
+
+.group-label{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 8px;
+}
+
+.group-label span{
+    flex: auto;
+    text-align: end;
+}
+
+.block-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+#map-frame {
+    width: 100%;;
+    min-height: 100%;
+}
+
+#texto-informativo {
+    text-align: justify;
+    font-size: 1.2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ebffca;
+    margin: 20px auto;
+    width: 90%;
+}
+
+.container-apoiadores {
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+}
+
+.apoiadores {
+    display: flex;   
+    animation: deslizar 25s linear infinite;
+}
+
+.apoiadores img {
+    margin-right: 20px; 
+    margin-left: 20px; 
+}
+
+@keyframes deslizar {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.history {
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.historico {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.logo_3 {
+    flex: 0 0 auto;
+}
+
+.logo_3 img {
+    height: 75px;
+}
+
+.title_3 {
+    flex: 1;
+    text-align: center;
+    font-size: 35px;
+    margin: 0;
+}
+
+.content {
+    max-width: 700px;
+    width: 100%;
+}
+
+.content p {
+    text-align: justify;
+    font-size: 1.2em;
+    padding: 10px;
+    background-color: #ebffca;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 20px;
+    line-height: 2em;
+    margin-top: 10px;
+}
+
+.fale-conosco {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Estilização do formulário */
+form {
+    background-color: #ebffca;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+}
+
+form p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 630px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form #captcha-container {
+    display: block;
+    margin: 10px 0;
+}
+
+form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.solicitar-dados {
+    max-width: 700px;
+    margin: 0px auto;
+    padding: 20px;   
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* Estilização do rodapé */
+#footer {
+    border-top: 1px solid black;
+    color: #f0f0f0 !important;
+    background: #333;
+    text-align: center !important;
+    
+	padding: 10px;
+    height: 100px;
+}
+
+#footer h5 {
+    color: #f0f0f0;
+    font-size: 80%;
+}
+
+#footer div.row {
+    margin-top: 10px;
+}
+
+strong, b {
+    font-weight: bold;
+    line-height: inherit;
+}
+
+#footer h5 span {
+    color: #999;
+}
+
+#footer a {
+    color: #aaa;
+    text-decoration: inline;
+    transition: 0.4s;   
+}
+
+#footer a:hover {
+    color: #37a1f7;
+}
+
+.footLinks {
+    font-size: 80%;
+    text-align: center;
+    margin-top: 20px;
+    color: #aaa;
+    transition: 0.4s;
+}
+
+.footLinks span {
+    color: #666;
+    padding: 0 5px;
+}
+
+
+/* REGRAS COMPARTILHADAS COM CSS JÁ EXISTENTE */
+
