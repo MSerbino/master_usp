@@ -6,63 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/favicon.png" type="image/favicon">
-    <title>MASTER - Solicitar Dados</title>
+    <title>MASTER - Meteorologia Aplicada a Sistemas de Tempo Regionais</title>
 </head>
 
 <body>
+    <!-- Início do Cabeçalho -->
     <!-- Header -->
     <header id="header">
+        <!-- Barra de navegação -->
         <nav id="nav">
+            <!-- Logo e Home link -->
             <h2><a href="index.html"><img src="img/logo_master3.png" alt="logo_master"></a></h2>
 
+            <!-- Dropdown para telas menores ou exibição alternativa -->
             <div class="logo-dropdown">
                 <a href="index.html"><img src="img/favicon.png" alt="logo_master"></a>
             </div>
 
+            <!-- Menu de navegação principal -->
             <ul>
+                <!-- Dropdown do menu "Produtos Numéricos" -->
                 <li>
-                    <a href="#">Produtos Numéricos</a>
+                    <a href="#" id="menu-produtos">Produtos Numéricos</a>
                     <ul>
-                        <li><a href="modelos_globais.html">Modelos Globais</a></li>
-                        <li><a href="modelos_regionais.html">Modelos Regionais</a></li>
-                        <li><a href="exposicao_sol.html">Exposição ao Sol</a></li>
-                        <li><a href="queimadas.html">Queimadas</a></li>
-                        <li><a href="comparacao_modelos.html">Comparação entre Modelos</a></li>
+                        <li><a href="modelos_globais.html" id="submenu-modelos-globais">Modelos Globais</a></li>
+                        <li><a href="modelos_regionais.html" id="submenu-modelos-regionais">Modelos Regionais</a></li>
+                        <li><a href="exposicao_sol.html" id="submenu-exposicao-sol">Exposição ao Sol</a></li>
+                        <li><a href="queimadas.html" id="submenu-queimadas">Queimadas</a></li>
+                        <li><a href="comparacao_modelos.html" id="submenu-comparacao-modelos">Comparação entre
+                                Modelos</a></li>
                     </ul>
                 </li>
+
+                <!-- Dropdown do menu "Dados Observados" -->
                 <li>
-                    <a href="#">Dados Observados</a>
+                    <a href="#" id="menu-dados">Dados Observados</a>
                     <ul>
-                        <li><a href="dados_observados.html">Imagens de Satélite</a></li>
-                        <li><a href="dados_observados.html">Radiossondagem</a></li>
-                        <li><a href="dados_observados.html">INMET - Estações Automáticas</a></li>
-                        <li><a href="dados_observados.html">METAR - Aeroportos</a></li>
-                        <li><a href="dados_observados.html">SYNOP</a></li>
+                        <li><a href="dados_observados.html" id="submenu-imagens-satelite">Imagens de Satélite</a></li>
+                        <li><a href="dados_observados.html" id="submenu-radiossondagem">Radiossondagem</a></li>
+                        <li><a href="dados_observados.html" id="submenu-inmet">INMET - Estações Automáticas</a></li>
+                        <li><a href="dados_observados.html" id="submenu-metar">METAR - Aeroportos</a></li>
+                        <li><a href="dados_observados.html" id="submenu-synop">SYNOP</a></li>
                     </ul>
                 </li>
+
+                <!-- Dropdown do menu "Laboratório" -->
                 <li>
-                    <a href="#">Laboratório</a>
+                    <a href="#" id="menu-laboratorio">Laboratório</a>
                     <ul>
-                        <li><a href="equipe.html">Equipe</a></li>
-                        <li><a href="ensino.html">Ensino</a></li>
-                        <li><a href="projeto_lba.html">Projeto LBA</a></li>
-                        <li><a href="artigos.html">Artigos</a></li>
-                        <li><a href="historico.html">Histórico</a></li>
-                        <li><a href="solicitar_dados.html">Solicitar Dados</a></li>
-                        <li><a href="fale_conosco.html">Fale Conosco</a></li>
+                        <li><a href="equipe.html" id="submenu-equipe">Equipe</a></li>
+                        <li><a href="ensino.html" id="submenu-ensino">Ensino</a></li>
+                        <li><a href="projeto_lba.html" id="submenu-projeto-lba">Projeto LBA</a></li>
+                        <li><a href="artigos.html" id="submenu-artigos">Artigos</a></li>
+                        <li><a href="historico.html" id="submenu-historico">Histórico</a></li>
+                        <li><a href="solicitar_dados.html" id="submenu-solicitar-dados">Solicitar Dados</a></li>
+                        <li><a href="fale_conosco.html" id="submenu-fale-conosco">Fale Conosco</a></li>
                     </ul>
                 </li>
+
+                <!-- Dropdown do menu "Idiomas" com mudança de idioma -->
                 <li>
                     <a href="#">Idiomas</a>
                     <ul>
                         <li><a href="#" onclick="changeLanguage('en')">English</a></li>
                         <li><a href="#" onclick="changeLanguage('es')">Español</a></li>
+                        <li><a href="#" onclick="changeLanguage('pt')">Português</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
+    <!-- Fim do cabeçalho -->
 
+    <!-- Início do conteúdo principal -->
     <main>
         <section class="solicitar-dados">
             <div class="banner">
@@ -175,7 +191,9 @@
             </form>
         </section>
     </main>
+    <!-- Fim do conteúdo principal -->
 
+    <!-- Início do script -->
     <script>
         // Gera um CAPTCHA simples com letras e números
         function generateCaptcha() {
@@ -233,7 +251,9 @@
             });
         });
     </script>
+    <!-- Fim do script -->
 
+    <!-- Início do Rodapé -->
     <!-- Footer -->
     <footer id="footer" class="hide-for-print">
         <div class="row">
@@ -249,19 +269,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        function changeLanguage(language) {
-            var links = document.querySelectorAll('a[href]');
-            for (var i = 0; i < links.length; i++) {
-                var href = links[i].getAttribute('href');
-                if (href && href.endsWith('.html')) {
-                    var parts = href.split('.');
-                    var newHref = parts[0] + '_' + language + '.' + parts[1];
-                    links[i].setAttribute('href', newHref);
-                }
-            }
-        }
-    </script>
+    <!-- Fim do Rodapé -->
 </body>
 
 </html>
