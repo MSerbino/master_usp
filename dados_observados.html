@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Ícone da página -->
+    <link rel="icon" href="img/favicon.png" type="image/favicon">
+    <!-- Link para ícones do Google Material -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Link para ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link para a biblioteca Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <!-- Link para a biblioteca netcdfjs -->
+    <script src="https://unpkg.com/netcdfjs"></script>
+    <!-- Script do menu toggle -->
+    <script src="menu-toogle.js" defer></script>
+    <!-- Script para troca de idioma -->
+    <script src="language.js" defer></script>
+    <title id="page-title">MASTER - Meteorologia Aplicada a Sistemas de Tempo Regionais</title>
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header id="header">
+        <nav id="nav">
+            <!-- Logotipo -->
+            <h2><a href="index.html"><img src="img/logo_master3.png" alt="logo_master"></a></h2>
+            <h4 id="header-title">Dados Observados</h4>
+            <ul>
+                <!-- Alternar idioma para Português -->
+                <li>
+                    <span class="lang-flag" onclick="changeLanguage('pt_5')">&#127463;&#127479;</span>
+                </li>
+                <!-- Alternar idioma para Inglês -->
+                <li>
+                    <span class="lang-flag" onclick="changeLanguage('en_5')">&#127482;&#127480;</span>
+                </li>
+                <!-- Alternar idioma para Espanhol -->
+                <li>
+                    <span class="lang-flag" onclick="changeLanguage('es_5')">&#127466;&#127480;</span>
+                </li>
+                <!-- Menu toggle -->
+                <div onclick="toggleMenu()">
+                    <i class="material-icons open-menu-icon">menu</i>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="map-container">
+        <!-- Mapa Leaflet -->
+        <div id="map" style="width: 100%; height: 600px;"></div>
+        <!-- Menu lateral -->
+        <div class="menu-lateral">
+            <div class="menu-lateral">
+                <ul>
+                    <!-- Link para a página de Imagem de Satélite -->
+                    <li>
+                        <a href="dados_observados.html">
+                            <i class="material-icons menu-lateral-icon">satellite_alt</i>
+                            <span class="menu-lateral-iten" id="satellite-image-link">Imagem de Satélite</span>
+                        </a>
+                    </li>
+                    <!-- Link para a página de Radiossondagem -->
+                    <li>
+                        <a href="dados_observados.html">
+                            <i class="material-icons menu-lateral-icon">settings_input_antenna</i>
+                            <span class="menu-lateral-iten" id="radiossondagem-link">Radiossondagem</span>
+                        </a>
+                    </li>
+                    <!-- Link para a página de Estações Automáticas do INMET -->
+                    <li>
+                        <a href="dados_observados.html">
+                            <i class="material-icons menu-lateral-icon">thermostat</i>
+                            <span class="menu-lateral-iten" id="inmet-link">INMET - Estações Automáticas</span>
+                        </a>
+                    </li>
+                    <!-- Link para a página de METAR - Aeroportos -->
+                    <li>
+                        <a href="dados_observados.html">
+                            <i class="material-icons menu-lateral-icon">flight</i>
+                            <span class="menu-lateral-iten" id="metar-link">METAR - Aeroportos</span>
+                        </a>
+                    </li>
+                    <!-- Link para a página de SYNOP -->
+                    <li>
+                        <a href="dados_observados.html">
+                            <i class="material-icons menu-lateral-icon">thermostat</i>
+                            <span class="menu-lateral-iten" id="synop-link">SYNOP</span>
+                        </a>
+                    </li>
+                    <!-- Link para a página de Controles -->
+                    <li>
+                        <a href="#" onclick="toggleMenu()">
+                            <i class="material-icons menu-lateral-icon">tune</i>
+                            <span class="menu-lateral-iten" id="controls-link">Controles</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Controles laterais -->
+                <div id="div-controls">
+                    <!-- Seção de variáveis de superfície -->
+                    <div id="divVarSup" class="div-block-control">
+                        <h4 id="surface-title">Superfície</h4>
+                        <div id="panel2b" class="panel-content">
+                            <!-- Controle METAR -->
+                            <label id="colorMET" data-tooltip="" title="" class="">
+                                <strong>
+                                    <span id="metar-title">METAR - Aeroportos</span>
+                                    <span style="color:#000;" id="spColorMet">▬</span>
+                                </strong>
+                            </label>
+                            <select name="cbDataMetar" id="cbDataMetar">
+                                <option value="202405281700" selected="">28-mai-2024 17:00</option>
+                            </select>
+                            <label for="son_met">
+                                <input style="margin-bottom:0" type="checkbox" name="sup" value="METAR" id="son_met"
+                                    data-date="#cbDataMetar" data-caption="METAR" data-outro="#son_met2">&nbsp;
+                                <span id="metar-option1">Vento, temperatura e ponto de orvalho</span>
+                            </label>
+                            <label for="son_met2">
+                                <input type="checkbox" name="sup" value="METAR2" id="son_met2" data-date="#cbDataMetar"
+                                    data-caption="METAR" data-outro="#son_met">&nbsp;
+                                <span id="metar-option2">Vento,
+                                    visibilidade e pressão</span>
+                            </label>
+                            <!-- Controle SYNOP -->
+                            <label id="colorSYN" data-tooltip="" title=""><b>
+                                    <span id="synop-title">SYNOP</span>
+                                    <span style="color:#007f00;" id="spColorSyn">▬</span></b>
+                            </label>
+                            <select name="cbDataSynop" id="cbDataSynop">
+                                <option value="202405281800" selected="">28-mai-2024 18:00</option>
+                            </select>
+                            <label for="son_syn">
+                                <input style="margin-bottom:0" type="checkbox" name="sup" value="SYNOP" id="son_syn"
+                                    data-date="#cbDataSynop" data-caption="SYNOP" data-outro="#son_syn2">&nbsp;
+                                <span id="synop-option1">Vento, temperatura e ponto de orvalho</span>
+                            </label>
+                            <label for="son_syn2">
+                                <input type="checkbox" name="sup" value="SYNOP2" id="son_syn2" data-date="#cbDataSynop"
+                                    data-caption="SYNOP" data-outro="#son_syn">&nbsp;
+                                <span id="synop-option2">Vento,
+                                    precipitação e pressão</span>
+                            </label>
+                            <!-- Controle INMET -->
+                            <label id="colorINM" data-tooltip="" title=""><b>
+                                    <span id="inmet-title">INMET - Est. Automáticas</span>
+                                    <span style="color:#ff0000;" id="spColorInm">▬</span></b>
+                            </label>
+                            <select name="cbDataInmet" id="cbDataInmet">
+                                <option value="202405282100" selected="">28-mai-2024 21:00</option>
+                            </select>
+                            <label for="son_inm">
+                                <input style="margin-bottom:0" type="checkbox" name="sup" value="INMET" id="son_inm"
+                                    data-date="#cbDataInmet" data-caption="INMET" data-outro="#son_inm2">&nbsp;
+                                <span id="inmet-option1">Vento, temperatura e ponto de orvalho</span>
+                            </label>
+                            <label for="son_inm2">
+                                <input type="checkbox" name="sup" value="INMET2" id="son_inm2" data-date="#cbDataInmet"
+                                    data-caption="INMET" data-outro="#son_inm">&nbsp;
+                                <span id="inmet-option2">Vento,
+                                    precipitação e radiação</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Seção de variáveis de altitude -->
+                    <div id="divVarAlt" class="div-block-control">
+                        <h4 id="altitude-title">Sondagem</h4>
+                        <div id="panel3b" class="panel-content">
+                            <!-- Controle Radiossondagem -->
+                            <label id="colorRAOB" data-tooltip="" title=""><b>
+                                    <span id="radiossondagem-title">Radiossondagem</span>
+                                    <span style="color:#0000ff;" id="spColorRaob">▬</span></b>
+                            </label>
+                            <select name="cbDataRaob" id="cbDataRaob">
+                                <option value="202405281200" selected="">28-mai-2024 12:00</option>
+                            </select>
+                            <label for="son_raob">
+                                <input style="margin-bottom:0" type="checkbox" name="alt" value="RAOB" id="son_raob"
+                                    data-date="#cbDataRaob" data-caption="RAOB" data-outro="#son_raob2">&nbsp;<span
+                                    id="raob-option1">Vento e temperatura</span>
+                            </label>
+                            <label for="son_raob2">
+                                <input type="checkbox" name="alt" value="RAOB2" id="son_raob2" data-date="#cbDataRaob"
+                                    data-caption="RAOB" data-outro="#son_raob">&nbsp;
+                                <span id="raob-option2">Vento,
+                                    umidade e pressão</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr class="panel-content-divisor">
+
+                    <!-- Seção de Legendas -->
+                    <div class="small-12 rows">
+                        <h4 id="caption-title">Legenda</h4>
+                        <p class="text-center" style="margin:0;" id="wind-title">Ventos</p>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m0000.png') no-repeat center;">0 m/s<span> - 0 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m0075.png') no-repeat center;">0,75 m/s<span> - 1,5 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m0250.png') no-repeat center;">2,5 m/s<span> - 5 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m0500.png') no-repeat center;">5 m/s<span> - 10 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m0750.png') no-repeat center;">7,5 m/s<span> - 15 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m1000.png') no-repeat center;">10 m/s<span> - 20 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m1250.png') no-repeat center;">12,5 m/s<span> - 25 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m1500.png') no-repeat center;">15 m/s<span> - 30 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m1750.png') no-repeat center;">17,5 m/s<span> - 35 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m2000.png') no-repeat center;">20 m/s<span> - 40 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m2250.png') no-repeat center;">22,5 m/s<span> - 45 kt</span>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/m2500.png') no-repeat center;">25 m/s<span> - 50 kt</span>
+                    </div>
+
+                    <hr class="panel-content-divisor">
+
+                    <div class="small-12 rows">
+                        <p class="text-center" style="margin:0;" id="cloudiness-title">Nebulosidade</p>
+                    </div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n00.png') no-repeat center;" id="cloudless-1">sem nuvens</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n01.png') no-repeat center;">0,1</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n02.png') no-repeat center;">0,2 &#8211; 0,3</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n04.png') no-repeat center;">0,4</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n05.png') no-repeat center;">0,5</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n06.png') no-repeat center;">0,6</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n08.png') no-repeat center;">0,7 &#8211; 0,8</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n09.png') no-repeat center;">0,9</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n10.png') no-repeat center;" id="cloudy-1">nublado</div>
+                    <div class="small-4 medium-1 columns legenda"
+                        style="background:url('caption/n-1.png') no-repeat center;" id="obstructed-sky-1">céu obstruído
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Inicio do rodapé -->
+    <!-- Footer -->
+    <footer id="footer" class="hide-for-print">
+        <div class="row">
+            <div class="small-12 columns">
+                <!-- Footer content -->
+                <h5 id="footer-title"><b>MASTER</b> | Meteorologia Aplicada a Sistemas de Tempo
+                    Regionais<br /><span>Instituto de
+                        Astronomia, Geofísica e Ciências Atmosféricas<br />
+                        Universidade de São Paulo</span></h5>
+                <!-- Footer links -->
+                <p class="footLinks">
+                    <a href="/pr/mapa/" id="footer-link-mapa">Mapa do site</a><span>|</span>
+                    <a href="/pedidos/formulario/" id="footer-link-solicitar-dados">Solicitar dados</a><span>|</span>
+                    <a href="/pr/fale/" id="footer-link-fale-conosco">Fale conosco</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Fim do rodapé -->
+
+    <script>
+        // Inicializa o mapa
+        var map = L.map('map').setView([22.553827879747278, -119.19589024062236], 5);
+
+        // Adiciona a camada do mapa base
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18
+        }).addTo(map);
+
+        var videoUrls = [
+            'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
+            'https://www.mapbox.com/bites/00188/patricia_nasa.mp4'
+        ];
+        var errorOverlayUrl = 'https://cdn-icons-png.flaticon.com/512/110/110686.png';
+        var latLngBounds = L.latLngBounds([[32, -130], [13, -100]]);
+
+        var videoOverlay = L.videoOverlay(videoUrls, latLngBounds, {
+            opacity: 0.8,
+            errorOverlayUrl: errorOverlayUrl,
+            interactive: true,
+            autoplay: true,
+            muted: true,
+            playsInline: true
+        }).addTo(map);
+    </script>
+</body>
+
+</html>

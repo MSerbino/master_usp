@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/favicon.png" type="image/favicon">
+    <title id="page-title">MASTER - Meteorologia Aplicada a Sistemas de Tempo Regionais</title>
+    <script src="language.js" defer></script>
+</head>
+
+<body>
+    <!-- Início do Cabeçalho -->
+    <!-- Header -->
+    <header id="header">
+        <!-- Barra de navegação -->
+        <nav id="nav">
+            <!-- Logo e Home link -->
+            <h2><a href="index.html"><img src="img/logo_master3.png" alt="logo_master"></a></h2>
+
+            <!-- Dropdown para telas menores ou exibição alternativa -->
+            <div class="logo-dropdown">
+                <a href="index.html"><img src="img/favicon.png" alt="logo_master"></a>
+            </div>
+
+            <!-- Menu de navegação principal -->
+            <ul>
+                <!-- Dropdown do menu "Produtos Numéricos" -->
+                <li>
+                    <a href="#" id="menu-produtos">Produtos Numéricos</a>
+                    <ul>
+                        <li><a href="modelos_globais.html" id="submenu-modelos-globais">Modelos Globais</a></li>
+                        <li><a href="modelos_regionais.html" id="submenu-modelos-regionais">Modelos Regionais</a></li>
+                        <li><a href="exposicao_sol.html" id="submenu-exposicao-sol">Exposição ao Sol</a></li>
+                        <li><a href="queimadas.html" id="submenu-queimadas">Queimadas</a></li>
+                        <li><a href="comparacao_modelos.html" id="submenu-comparacao-modelos">Comparação entre
+                                Modelos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Dados Observados" -->
+                <li>
+                    <a href="#" id="menu-dados">Dados Observados</a>
+                    <ul>
+                        <li><a href="dados_observados.html" id="submenu-imagens-satelite">Imagens de Satélite</a></li>
+                        <li><a href="dados_observados.html" id="submenu-radiossondagem">Radiossondagem</a></li>
+                        <li><a href="dados_observados.html" id="submenu-inmet">INMET - Estações Automáticas</a></li>
+                        <li><a href="dados_observados.html" id="submenu-metar">METAR - Aeroportos</a></li>
+                        <li><a href="dados_observados.html" id="submenu-synop">SYNOP</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Laboratório" -->
+                <li>
+                    <a href="#" id="menu-laboratorio">Laboratório</a>
+                    <ul>
+                        <li><a href="equipe.html" id="submenu-equipe">Equipe</a></li>
+                        <li><a href="ensino.html" id="submenu-ensino">Ensino</a></li>
+                        <li><a href="projeto_lba.html" id="submenu-projeto-lba">Projeto LBA</a></li>
+                        <li><a href="artigos.html" id="submenu-artigos">Artigos</a></li>
+                        <li><a href="historico.html" id="submenu-historico">Histórico</a></li>
+                        <li><a href="solicitar_dados.html" id="submenu-solicitar-dados">Solicitar Dados</a></li>
+                        <li><a href="fale_conosco.html" id="submenu-fale-conosco">Fale Conosco</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Idiomas" com mudança de idioma -->
+                <li>
+                    <a href="#">Idiomas</a>
+                    <ul>
+                        <li><a href="#" onclick="changeLanguage('en_3')">English</a></li>
+                        <li><a href="#" onclick="changeLanguage('es_3')">Español</a></li>
+                        <li><a href="#" onclick="changeLanguage('pt_3')">Português</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Fim do cabeçalho -->
+
+    <!-- Início conteúdo principal -->
+    <main>
+        <section class="fale-conosco">
+            <div class="banner">
+                <div class="logo_3">
+                    <img src="img/logo_master3.png" alt="Logo Master">
+                </div>
+                <div class="title_3">
+                    <h1 id="fale-conosco-title">Fale Conosco</h1>
+                </div>
+            </div>
+
+            <form id="contact-form" action="/fale_conosco" method="post">
+                <p id="contact-form-description">Faça uma pergunta ou crítica.</p>
+                <label for="name" id="name-label">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email" id="email-label">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject" id="subject-label">Assunto:</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message" id="message-label">Mensagem:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <label for="captcha" id="captcha-label">Digite o texto a seguir:</label>
+                <div id="captcha-container"></div>
+                <input type="text" id="captcha-input" name="captcha" required>
+                <button type="submit" id="submit-button">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <!-- Fim do conteúdo principal -->
+    <!-- Início do Script -->
+    <script>
+        // Gera um CAPTCHA simples com letras e números
+        function generateCaptcha() {
+            const charsArray = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const lengthOtp = 6;
+            let captcha = [];
+            for (let i = 0; i < lengthOtp; i++) {
+                const index = Math.floor(Math.random() * charsArray.length);
+                captcha.push(charsArray[index]);
+            }
+            return captcha.join('');
+        }
+
+        // Renderiza o CAPTCHA como uma imagem no container
+        function renderCaptcha(captcha) {
+            const canvas = document.createElement("canvas");
+            canvas.width = 200;
+            canvas.height = 50;
+            const ctx = canvas.getContext("2d");
+
+            // Adiciona efeito de distorção à imagem
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "#000";
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            ctx.fillText(captcha, canvas.width / 2, canvas.height / 2);
+
+            // Adiciona ruído à imagem
+            for (let i = 0; i < 10; i++) {
+                ctx.fillStyle = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`;
+                ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
+            }
+
+            return canvas.toDataURL("image/png");
+        }
+
+        // Inicializa o CAPTCHA no carregamento da página
+        document.addEventListener("DOMContentLoaded", () => {
+            const captchaText = generateCaptcha();
+            const captchaContainer = document.getElementById("captcha-container");
+
+            const captchaImage = new Image();
+            captchaImage.src = renderCaptcha(captchaText);
+            captchaImage.style.filter = "blur(1px)"; // Adiciona efeito de blur à imagem
+            captchaContainer.appendChild(captchaImage);
+
+            // Validação do CAPTCHA no envio do formulário
+            const form = document.getElementById("contact-form");
+            form.addEventListener("submit", (e) => {
+                const userInput = document.getElementById("captcha-input").value;
+                if (userInput !== captchaText) {
+                    alert("CAPTCHA incorreto. Tente novamente.");
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+    <!-- Fim do script -->
+
+    <!-- Inicio do rodapé -->
+    <!-- Footer -->
+    <footer id="footer" class="hide-for-print">
+        <div class="row">
+            <div class="small-12 columns">
+                <!-- Footer content -->
+                <h5 id="footer-title"><b>MASTER</b> | Meteorologia Aplicada a Sistemas de Tempo
+                    Regionais<br /><span>Instituto de
+                        Astronomia, Geofísica e Ciências Atmosféricas<br />
+                        Universidade de São Paulo</span></h5>
+                <!-- Footer links -->
+                <p class="footLinks">
+                    <a href="/pr/mapa/" id="footer-link-mapa">Mapa do site</a><span>|</span>
+                    <a href="/pedidos/formulario/" id="footer-link-solicitar-dados">Solicitar dados</a><span>|</span>
+                    <a href="/pr/fale/" id="footer-link-fale-conosco">Fale conosco</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Fim do rodapé -->
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/favicon.png" type="image/favicon">
+    <title id="page-title">MASTER - Meteorologia Aplicada a Sistemas de Tempo Regionais</title>
+    <script src="language.js" defer></script>
+</head>
+
+<body>
+    <!-- Início do Cabeçalho -->
+    <!-- Header -->
+    <header id="header">
+        <!-- Barra de navegação -->
+        <nav id="nav">
+            <!-- Logo e Home link -->
+            <h2><a href="index.html"><img src="img/logo_master3.png" alt="logo_master"></a></h2>
+
+            <!-- Dropdown para telas menores ou exibição alternativa -->
+            <div class="logo-dropdown">
+                <a href="index.html"><img src="img/favicon.png" alt="logo_master"></a>
+            </div>
+
+            <!-- Menu de navegação principal -->
+            <ul>
+                <!-- Dropdown do menu "Produtos Numéricos" -->
+                <li>
+                    <a href="#" id="menu-produtos">Produtos Numéricos</a>
+                    <ul>
+                        <li><a href="modelos_globais.html" id="submenu-modelos-globais">Modelos Globais</a></li>
+                        <li><a href="modelos_regionais.html" id="submenu-modelos-regionais">Modelos Regionais</a></li>
+                        <li><a href="exposicao_sol.html" id="submenu-exposicao-sol">Exposição ao Sol</a></li>
+                        <li><a href="queimadas.html" id="submenu-queimadas">Queimadas</a></li>
+                        <li><a href="comparacao_modelos.html" id="submenu-comparacao-modelos">Comparação entre
+                                Modelos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Dados Observados" -->
+                <li>
+                    <a href="#" id="menu-dados">Dados Observados</a>
+                    <ul>
+                        <li><a href="dados_observados.html" id="submenu-imagens-satelite">Imagens de Satélite</a></li>
+                        <li><a href="dados_observados.html" id="submenu-radiossondagem">Radiossondagem</a></li>
+                        <li><a href="dados_observados.html" id="submenu-inmet">INMET - Estações Automáticas</a></li>
+                        <li><a href="dados_observados.html" id="submenu-metar">METAR - Aeroportos</a></li>
+                        <li><a href="dados_observados.html" id="submenu-synop">SYNOP</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Laboratório" -->
+                <li>
+                    <a href="#" id="menu-laboratorio">Laboratório</a>
+                    <ul>
+                        <li><a href="equipe.html" id="submenu-equipe">Equipe</a></li>
+                        <li><a href="ensino.html" id="submenu-ensino">Ensino</a></li>
+                        <li><a href="projeto_lba.html" id="submenu-projeto-lba">Projeto LBA</a></li>
+                        <li><a href="artigos.html" id="submenu-artigos">Artigos</a></li>
+                        <li><a href="historico.html" id="submenu-historico">Histórico</a></li>
+                        <li><a href="solicitar_dados.html" id="submenu-solicitar-dados">Solicitar Dados</a></li>
+                        <li><a href="fale_conosco.html" id="submenu-fale-conosco">Fale Conosco</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Idiomas" com mudança de idioma -->
+                <li>
+                    <a href="#">Idiomas</a>
+                    <ul>
+                        <li><a href="#" onclick="changeLanguage('en_2')">English</a></li>
+                        <li><a href="#" onclick="changeLanguage('es_2')">Español</a></li>
+                        <li><a href="#" onclick="changeLanguage('pt_2')">Português</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Fim do cabeçalho -->
+    <!-- Início Conteúdo Principal -->
+    <main class="history">
+        <!-- Seção do histórico -->
+        <section class="historico">
+            <div class="logo_3">
+                <img src="img/logo_master3.png" alt="Logo Master">
+            </div>
+            <div class="title_3">
+                <h1 id="historico-title">Histórico do Laboratório</h1>
+            </div>
+        </section>
+        <section class="content">
+            <p id="historico-content">
+                &emsp;&emsp;Desde sua criação, em 1994, o Laboratório de Meteorologia Aplicada a Sistemas de Tempo
+                Regionais -
+                MASTER
+                - buscou contribuir para a formação dos alunos de graduação e Pós-Graduação do IAG-USP nas áreas de
+                Meteorologia Operacional e Modelagem Numérica da Atmosfera. No início, localizado no subsolo do Prédio
+                Principal do IAG-USP, o laboratório contava com computadores de uso pessoal e servidores de diversas
+                empresas, tais como IBM, Silicon Graphics e Sun. A maior parte das máquinas era baseada em tecnologia 64
+                bits, algo avançado para a época, e usava o sistema operacional UNIX, permitindo o tratamento de
+                produtos de sensoriamento remoto, como satélites, e a avaliação de produtos gerados por modelos
+                numéricos de diversos centros, tais como o NCEP dos Estados Unidos, o ECMWF do Reino Unido e o
+                CPTEC-INPE do Brasil. Com o passar dos anos, em função do avanço tecnológico e de parcerias importantes
+                com instituições nacionais e estrangeiras, o MASTER iniciou também, dentro de seu ambiente operacional,
+                integrações com o modelo de mesoescala “Regional Atmospheric Modeling System” - RAMS.
+                <br><br>
+                &emsp;&emsp;Além dos produtos de modelos numéricos, desde a sua criação, o MASTER realiza uma atividade
+                de
+                extrema importância: o armazenamento de diversos produtos de uso rotineiro na atividade de previsão
+                do tempo, tais como sondagens, imagens de satélite, METAR, SYNOP e estações de superfície; sendo
+                referência nacional no fornecimento de dados ou informações para diversos tipos de usuários, desde
+                instituições de ensino e pesquisa até indivíduos interessados em atividades de lazer.
+                <br><br>
+                &emsp;&emsp;O MASTER inovou, no Brasil e na América do Sul, o conceito de laboratório de suporte ao
+                ensino e à
+                pesquisa em Meteorologia. Os diversos estudantes de pós-graduação que por ali passaram e depois
+                retornaram as instituições de todo o país, usaram a estrutura e o funcionamento do MASTER como
+                modelo para montar laboratórios semelhantes em suas instituições. Hoje o MASTER ainda lidera as
+                atividades inovadoras desse tipo de laboratório e está entre os melhores do mundo no gênero - apoio
+                ao ensino e à pesquisa em Meteorologia.
+                <br><br>
+                &emsp;&emsp;Atualmente, sempre baseado no tripé “ensino/pesquisa/prestação de serviços”, o MASTER tem
+                apoiado
+                atividades de pesquisa no IAG em projetos financiados pela FINEP, FAPESP, CNPq e em outras
+                instituições nacionais (CPTEC, IPH/UFRGS) e estrangeiras (Harvard University). O apoio se dá através
+                do desenvolvimento de novas funcionalidades e de experimentos numéricos em modelos de previsão de
+                tempo e clima, com particular ênfase em processos regionais e interação entre a superfície e a
+                atmosfera e transporte/transformação de poluentes. O MASTER também tem oferecido estágios para
+                alunos de graduação que se familiarizam com “softwares” comuns em Meteorologia (GrADS, NCL, R, entre
+                outros ).
+                <br><br>
+                &emsp;&emsp;Como exemplos mais recentes de prestações de serviço realizadas pelo MASTER, podem ser
+                mencionados
+                estudos sobre impacto de ciclones intensos na região das plataformas de exploração de petróleo da
+                Petrobras, análise das previsões climáticas para o Governo do Estado da Bahia, previsões numéricas
+                de vento e ondas para Angra dos Reis (Petrobras). É também mantida uma cooperação técnica com a
+                empresa SOMAR em temas relacionados com produtos numéricos de previsão meteorológica. O MASTER
+                também presta serviços para projetos de pesquisa no IAG/USP (projetos FINEP, FAPESP, CNPq) Uma das
+                principais realizações no Laboratório MASTER foi o desenvolvimento de um sistema operacional
+                automatizado para previsão de tempo regional que foi transferido para diversas instituições
+                nacionais (Fundação Cearense de Meteorologia e Recursos Hídricos - FUNCEME, Sistema Meteorológico do
+                Paraná - SIMEPAR, e universidades federais como a UFRJ, FURGS, UFPA e UFCG). Atualmente, também
+                realiza previsões operacionais da concentração de alguns poluentes sobre a região metropolitana de
+                São Paulo.
+            </p>
+        </section>
+    </main>
+    <!-- Fim do Conteúdo Principal -->
+
+    <!-- Inicio do rodapé -->
+    <!-- Footer -->
+    <footer id="footer" class="hide-for-print">
+        <div class="row">
+            <div class="small-12 columns">
+                <!-- Footer content -->
+                <h5 id="footer-title"><b>MASTER</b> | Meteorologia Aplicada a Sistemas de Tempo
+                    Regionais<br /><span>Instituto de
+                        Astronomia, Geofísica e Ciências Atmosféricas<br />
+                        Universidade de São Paulo</span></h5>
+                <!-- Footer links -->
+                <p class="footLinks">
+                    <a href="/pr/mapa/" id="footer-link-mapa">Mapa do site</a><span>|</span>
+                    <a href="/pedidos/formulario/" id="footer-link-solicitar-dados">Solicitar dados</a><span>|</span>
+                    <a href="/pr/fale/" id="footer-link-fale-conosco">Fale conosco</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Fim do rodapé -->
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/favicon.png" type="image/favicon">
+    <title id="page-title">MASTER - Meteorologia Aplicada a Sistemas de Tempo Regionais</title>
+    <script src="language.js" defer></script>
+</head>
+
+<body>
+    <!-- Início do Cabeçalho -->
+    <!-- Header -->
+    <header id="header">
+        <!-- Barra de navegação -->
+        <nav id="nav">
+            <!-- Logo e Home link -->
+            <h2><a href="index.html"><img src="img/logo_master3.png" alt="logo_master"></a></h2>
+
+            <!-- Dropdown para telas menores ou exibição alternativa -->
+            <div class="logo-dropdown">
+                <a href="index.html"><img src="img/favicon.png" alt="logo_master"></a>
+            </div>
+
+            <!-- Menu de navegação principal -->
+            <ul>
+                <!-- Dropdown do menu "Produtos Numéricos" -->
+                <li>
+                    <a href="#" id="menu-produtos">Produtos Numéricos</a>
+                    <ul>
+                        <li><a href="modelos_globais.html" id="submenu-modelos-globais">Modelos Globais</a></li>
+                        <li><a href="modelos_regionais.html" id="submenu-modelos-regionais">Modelos Regionais</a></li>
+                        <li><a href="exposicao_sol.html" id="submenu-exposicao-sol">Exposição ao Sol</a></li>
+                        <li><a href="queimadas.html" id="submenu-queimadas">Queimadas</a></li>
+                        <li><a href="comparacao_modelos.html" id="submenu-comparacao-modelos">Comparação entre
+                                Modelos</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Dados Observados" -->
+                <li>
+                    <a href="#" id="menu-dados">Dados Observados</a>
+                    <ul>
+                        <li><a href="dados_observados.html" id="submenu-imagens-satelite">Imagens de Satélite</a></li>
+                        <li><a href="dados_observados.html" id="submenu-radiossondagem">Radiossondagem</a></li>
+                        <li><a href="dados_observados.html" id="submenu-inmet">INMET - Estações Automáticas</a></li>
+                        <li><a href="dados_observados.html" id="submenu-metar">METAR - Aeroportos</a></li>
+                        <li><a href="dados_observados.html" id="submenu-synop">SYNOP</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Laboratório" -->
+                <li>
+                    <a href="#" id="menu-laboratorio">Laboratório</a>
+                    <ul>
+                        <li><a href="equipe.html" id="submenu-equipe">Equipe</a></li>
+                        <li><a href="ensino.html" id="submenu-ensino">Ensino</a></li>
+                        <li><a href="projeto_lba.html" id="submenu-projeto-lba">Projeto LBA</a></li>
+                        <li><a href="artigos.html" id="submenu-artigos">Artigos</a></li>
+                        <li><a href="historico.html" id="submenu-historico">Histórico</a></li>
+                        <li><a href="solicitar_dados.html" id="submenu-solicitar-dados">Solicitar Dados</a></li>
+                        <li><a href="fale_conosco.html" id="submenu-fale-conosco">Fale Conosco</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown do menu "Idiomas" com mudança de idioma -->
+                <li>
+                    <a href="#">Idiomas</a>
+                    <ul>
+                        <li><a href="#" onclick="changeLanguage('en')">English</a></li>
+                        <li><a href="#" onclick="changeLanguage('es')">Español</a></li>
+                        <li><a href="#" onclick="changeLanguage('pt')">Português</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Fim do cabeçalho -->
+
+    <main>
+        <div class="row">
+            <div>
+                <!-- Container do conteúdo principal -->
+                <div class="container">
+                    <!-- Seção de banner -->
+                    <section id="banner">
+                        <img src="img/logo_master.png" alt="logo_master"><br>
+                        <!-- Seção de texto informativo -->
+                        <div id="texto-informativo">
+                            <h4 id="attention-title">ATENÇÃO</h4>
+                            <p id="attention-text"> As informações meteorológicas contidas neste site são geradas de
+                                maneira automática
+                                sem controle de qualidade realizado visualmente por um meteorologista. Os produtos
+                                têm finalidade de ensino, pesquisa, treinamento e divulgação geral. NÃO nos
+                                responsabilizamos pela utilização destas informações!</p>
+                        </div>
+                    </section>
+                </div><!-- Fim do container do contéudo principal -->
+            </div>
+        </div>
+
+        <!-- Seção de apoiadores/pratrocinadores -->
+        <div class="container-apoiadores">
+            <div class="apoiadores">
+                <!-- Logos de organizações de apoio -->
+                <a href="http://www.usp.br/"><img src="/img/logotipo_usp.jpeg" alt="USP"></a>
+                <a href="http://www.cnpq.br/"><img src="/img/logotipo_cnpq.jpeg" alt="CNPq"></a>
+                <a href="http://www.fapesp.br/"><img src="/img/logotipo_fapesp.jpeg" alt="FAPESP"></a>
+                <a href="http://www.finep.gov.br/"><img src="/img/logotipo_finep.jpeg" alt="FINEP"></a>
+                <a href="http://www.capes.gov.br/"><img src="/img/logotipo_capes.jpeg" alt="CAPES"></a>
+                <a href="#"><img src="/img/logotipo_somar_meteorologia.png" alt="SOMAR METEOROLOGIA"></a>
+                <a href="#"><img src="/img/logotipo_arestech.jpg" alt="ARESTech"></a>
+                <a href="https://exaflop.com.br/"><img src="/img/logotipo_exaflop_sistemas.png"
+                        alt="EXAFLOP SISTEMAS"></a>
+                <!-- Adicione mais logos de apoiadores conforme necessário -->
+
+                <!-- Logos de organizações de apoio, repetição -->
+                <a href="http://www.usp.br/"><img src="/img/logotipo_usp.jpeg" alt="USP"></a>
+                <a href="http://www.cnpq.br/"><img src="/img/logotipo_cnpq.jpeg" alt="CNPq"></a>
+                <a href="http://www.fapesp.br/"><img src="/img/logotipo_fapesp.jpeg" alt="FAPESP"></a>
+                <a href="http://www.finep.gov.br/"><img src="/img/logotipo_finep.jpeg" alt="FINEP"></a>
+                <a href="http://www.capes.gov.br/"><img src="/img/logotipo_capes.jpeg" alt="CAPES"></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Inicio do rodapé -->
+    <!-- Footer -->
+    <footer id="footer" class="hide-for-print">
+        <div class="row">
+            <div class="small-12 columns">
+                <!-- Footer content -->
+                <h5 id="footer-title"><b>MASTER</b> | Meteorologia Aplicada a Sistemas de Tempo
+                    Regionais<br /><span>Instituto de
+                        Astronomia, Geofísica e Ciências Atmosféricas<br />
+                        Universidade de São Paulo</span></h5>
+                <!-- Footer links -->
+                <p class="footLinks">
+                    <a href="/pr/mapa/" id="footer-link-mapa">Mapa do site</a><span>|</span>
+                    <a href="/pedidos/formulario/" id="footer-link-solicitar-dados">Solicitar dados</a><span>|</span>
+                    <a href="/pr/fale/" id="footer-link-fale-conosco">Fale conosco</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Fim do rodapé -->
+</body>
+
+</html>
